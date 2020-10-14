@@ -1,5 +1,3 @@
-import 'package:douban_try01/model/search_result.dart';
-
 import 'http_request.dart';
 import 'mock_request.dart';
 
@@ -27,14 +25,14 @@ class API{
 
   var _request = HttpRequest(API.BASE_URL);
 
-  void searchMovie(
-      String searchContent, RequestCallBack requestCallBack) async {
-
-    // 若接口不能使用，使用模拟数据
-    var req = MockRequest();
-    var result = await req.get(API.COMING_SOON);
-
-    SearchResult bean = SearchResult.fromJson(result);
-    requestCallBack(bean);
-  }
+//  void searchMovie(
+//      String searchContent, RequestCallBack requestCallBack) async {
+//
+//    // 若接口不能使用，使用模拟数据
+//    var req = MockRequest();
+//    var result = await req.get(API.COMING_SOON);
+//
+//    SearchResult bean = SearchResult.fromJson(result);
+//    requestCallBack(bean);
+//  }
 }
