@@ -28,7 +28,7 @@ DefaultTabController getWidget() {
           return <Widget>[
             SliverOverlapAbsorber(
                 handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                child: SliverAppBar(
+                sliver: SliverAppBar(
                   // 固定在顶部
                     pinned: true,
                     snap: true,

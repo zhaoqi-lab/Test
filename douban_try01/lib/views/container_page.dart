@@ -21,7 +21,7 @@ class _Item {
   _Item(this.name, this.activeIcon,this.normalIcon);
 }
 class _ContainerPageState extends State<ContainerPage> {
-  final ShopPageWidget shopPageWidget = ShopPageWidget();
+  final ShopPageHome shopPageWidget = ShopPageHome();
   List<Widget> pages;
   final defaultItemColor = Color.fromARGB(255, 125, 125, 125);
 
@@ -108,7 +108,7 @@ class _ContainerPageState extends State<ContainerPage> {
           print('bottomNavigationBar onTap $index');
           setState((){
             _selectIndex = index;
-            shopPageWidget.setShowState(pages.indexOf(shopPageWidget) == _selectIndex);
+            //shopPageWidget.setShowState(pages.indexOf(shopPageWidget) == _selectIndex);
           });
         },
         //图标大小
