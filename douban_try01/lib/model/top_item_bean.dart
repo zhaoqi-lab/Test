@@ -5,6 +5,7 @@ class TopItemBean{
   var imgUrl;//图片url
   List<Item> items;//多少个电影
   TopItemBean(this.count, this.imgUrl, this.items);
+
   ///将周口碑榜数据转换成榜单item对应的数据类型
   static TopItemBean convertWeeklyBeans(List<SubjectEntity> weeklyBeans){
     var count = '每周五更新 · 共${math.min(weeklyBeans.length, 10)}部';

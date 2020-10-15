@@ -6,7 +6,6 @@ class FlutterTabBarView extends StatelessWidget{
   FlutterTabBarView({Key key, @required this.tabController}) :super(key:key);
   @override
   Widget build(BuildContext context) {
-    print('build FlutterTabBarView');
     var viewList = [
       MoviePage(key: PageStorageKey<String>('MoviePage'),),
       Page1(),

@@ -1,5 +1,6 @@
 import 'package:douban_try01/application.dart';
 import 'package:douban_try01/routers/routers.dart';
+import 'package:douban_try01/views/detail/detail_page.dart';
 import 'package:flutter/material.dart';
 
 typedef TapCallback = void Function();
@@ -7,7 +8,9 @@ class TitleWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return Row(
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 12, 0,2),
+      child:Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         _TextImgWidget(
@@ -23,7 +26,9 @@ class TitleWidget extends StatelessWidget{
           'assets/images/douban_top.png',
           tapCallback: () {
             print('点击豆瓣榜单');
-            Application.router.navigateTo(context, '${Routes.searchPage}?searchHintContent=${Uri.encodeComponent('豆瓣榜单')}');
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return DouBanListView();
+            }));
           },
         ),
         _TextImgWidget(
@@ -43,6 +48,7 @@ class TitleWidget extends StatelessWidget{
           },
         ),
       ],
+    ),
     );
   }
 
@@ -71,19 +77,15 @@ class _TextImgWidget extends StatelessWidget{
         children: <Widget>[
           Image.asset(
             imgAsset,
-            width: 45,
-            height: 45,
+            width: 48,
+            height: 48,
           ),
+          SizedBox(height: 6),
           Text(
             text,
             style: TextStyle(
-              fontSize: 13,
-              color: Color.fromARGB(
-                255,
-                128,
-                128,
-                128,
-              ),
+              fontSize: 14,
+              color: Colors.black54,
             ),
           ),
         ],

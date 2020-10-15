@@ -1,4 +1,6 @@
 
+import 'package:flutter/cupertino.dart';
+
 import '../../widgets/video_widget.dart';
 import '../../http/mock_request.dart';
 import '../../application.dart';
@@ -9,7 +11,7 @@ import 'package:flutter/material.dart';
 import '../../model/subject.dart';
 import '../../constant/constant.dart';
 import '../../widgets/image/radius_img.dart';
-
+import 'package:flutter_swiper/flutter_swiper.dart';
 class HomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ var _tabs = ['动态', '推荐'];
 // 返回默认的Tab控制器
 DefaultTabController getWidget() {
   return DefaultTabController(
-    initialIndex: 1,
+    initialIndex: 0,
     length: _tabs.length,
     child: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled){
@@ -103,12 +105,10 @@ class SliverContainer extends StatefulWidget{
 }
 
 class _SliverContainerState extends State<SliverContainer>{
-
   @override
   void initState() {
     super.initState();
     print('init state${widget.name}');
-    ///请求动态数据
     if (list == null || list.isEmpty) {
       if (_tabs[0] == widget.name) {
         requestAPI();
@@ -117,11 +117,11 @@ class _SliverContainerState extends State<SliverContainer>{
         requestAPI();
       }
     }
+    // TODO: implement initState
   }
 
   // 添加 subject
   List<Subject> list;
-
   void requestAPI() async{
     print("请求动态数据");
     var _request = MockRequest();
@@ -138,7 +138,7 @@ class _SliverContainerState extends State<SliverContainer>{
   }
   getContentSliver(BuildContext context, List<Subject> list) {
     if (widget.name == _tabs[0]) {
-     // return _loginContainer(context);
+      return _loginContainer(context);
     }
 
     print('getContentSliver');
@@ -159,7 +159,6 @@ class _SliverContainerState extends State<SliverContainer>{
             key: PageStorageKey<String>(widget.name),
             slivers: <Widget>[
               SliverOverlapInjector(
-                // This is the flip side of the SliverOverlapAbsorber above.
                 handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               ),
               SliverList(
@@ -290,4 +289,83 @@ class _SliverContainerState extends State<SliverContainer>{
         ]
     );
   }
+}
+
+///动态TAB
+_loginContainer(BuildContext context){
+  return Container(
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
+    padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+    width: MediaQuery.of(context).size.width,
+    height: 80,
+    child: Swiper(
+      itemCount: 4,
+      itemBuilder: (BuildContext context,int index){
+        return new Container(
+          height: 60.0,  // 设置高度
+          margin: EdgeInsets.fromLTRB(8,120,8,50),
+          child: new Card(
+            elevation: 15.0,  //设置阴影
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),  //设置圆角
+            child: Padding(
+                padding:EdgeInsets.all(10),
+                child:new Column(// card只能有一个widget，但这个widget内容可以包含其他的widget
+                  children: <Widget>[
+                    ListTile(
+                      title: new Text('留学生疫情观察',
+                          style: new TextStyle(fontWeight: FontWeight.w500,fontSize: 22)),
+                      subtitle: new Text('新发起'),
+                      leading: new Icon(
+                        Icons.apps,
+                        color: Colors.green,
+                        size: 32,
+                      ),
+                    ),
+                    ListTile(
+                      title: new Text('寰宇同此炎凉，随着冠状病毒在欧洲爆发甚至世界范围内流行，留学的你如何自我保护？',
+                          style: new TextStyle(fontWeight: FontWeight.w100,fontSize: 16)),
+                      leading: new Icon(
+                        Icons.ac_unit,
+                        color: Colors.green,
+                        size: 32,
+                      ),
+                    ),
+                    ListTile(
+                      subtitle: new Text('\t\t\t\t3552篇内容·1702.2万次浏览',
+                          style: new TextStyle(fontWeight: FontWeight.normal,fontSize: 12)),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                      width: 160,
+                      height: 60,
+                      child:RaisedButton(
+                        color: Colors.green,
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10))
+                        ),
+                        child:Text('参与话题',
+                            style: new TextStyle(fontWeight: FontWeight.w300,fontSize: 15)),
+                        onPressed: (){
+                        },
+                      ),
+                    ),
+                  ],
+
+                ),
+            )
+
+          ),
+        );
+      },
+      pagination: SwiperPagination(
+        alignment: Alignment.bottomCenter,
+        margin: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+        builder: DotSwiperPaginationBuilder(
+            color: Colors.black54, activeColor: Colors.green),
+      ),
+      controller: SwiperController(),
+      scrollDirection: Axis.horizontal,
+    ),
+  );
 }

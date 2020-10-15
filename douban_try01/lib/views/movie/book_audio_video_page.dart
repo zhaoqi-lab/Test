@@ -1,7 +1,7 @@
 import 'package:douban_try01/application.dart';
-import 'package:douban_try01/routers/routers.dart';
 import 'package:douban_try01/widgets/my_tab_bar_widget.dart';
 import 'package:douban_try01/widgets/searchtextfield_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -21,10 +21,10 @@ class _BookAudioVideoPageState extends State<BookAudioVideoPage> with SingleTick
     super.initState();
     tabBar = HomePageTabBar();
     tabList = getTabList();
-    // _tabController = TabController(vsync: this, length: tabList.length);
+    _tabController = TabController(vsync: this, length: tabList.length);
   }
   List<Widget> getTabList(){
-    return titleList.map((item)=> Text('$item',style: TextStyle(fontSize: 15),)).toList();
+    return titleList.map((item)=> Text('$item',style: TextStyle(fontSize: 15))).toList();
   }
   @override
   Widget build(BuildContext context) {
@@ -54,9 +54,9 @@ Widget _getNestedScrollView(Widget tabBar){
                 Expanded(
                   child: SearchTextFieldWidget(
                     hintText: hintText,
-                    onTab: () {
-                      Application.router.navigateTo(context, '${Routes.searchPage}?searchHintContent=${Uri.encodeComponent(hintText)}');
-                    },
+//                    onTab: () {
+//                      Application.router.navigateTo(context, '${Routes.searchPage}?searchHintContent=${Uri.encodeComponent(hintText)}');
+//                    },
                   ),
                 ),
                 IconButton(
@@ -73,8 +73,8 @@ Widget _getNestedScrollView(Widget tabBar){
           floating: true,
           pinned: true,
           delegate: _SliverAppBarDelegate(
-              maxHeight: 49.0,
-              minHeight: 49.0,
+              maxHeight: 50.0,
+              minHeight: 50.0,
               child: Container(
                 color: Colors.white,
                 child: tabBar,
@@ -103,7 +103,7 @@ class _HomePageTabBarState extends State<HomePageTabBar>{
   @override
   void initState() {
     super.initState();
-    selectColor = Colors.black;
+    selectColor = Colors.green;
     unselectedColor = Color.fromARGB(255, 117, 117, 117);
     selectStyle = TextStyle(fontSize: 18, color: selectColor);
     unselectedStyle = TextStyle(fontSize: 18, color: selectColor);
@@ -118,10 +118,16 @@ class _HomePageTabBarState extends State<HomePageTabBar>{
   Widget build(BuildContext context) {
 
     return Container(
+      height: 50,
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1,color: Colors.grey)),
+        border: Border(
+          bottom: BorderSide(
+                width: 1,
+                color: Colors.grey
+            )
+        ),
       ),
-      margin: EdgeInsets.only(top:10.0,bottom: 10.0),
+      margin: EdgeInsets.only(top:0,bottom: 0),
       child: TabBar(
         tabs: tabList,
         isScrollable: true,
@@ -131,7 +137,7 @@ class _HomePageTabBarState extends State<HomePageTabBar>{
         labelStyle: selectStyle,
         unselectedLabelColor: unselectedColor,
         unselectedLabelStyle: unselectedStyle,
-        indicatorSize: TabBarIndicatorSize.label,
+        indicatorSize: TabBarIndicatorSize.tab,
       ),
     );
   }
