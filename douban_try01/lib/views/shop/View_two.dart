@@ -68,6 +68,7 @@ class Time_IconRow extends StatelessWidget {
       children: [
         IconIndividuality(icons: Icon(Icons.school,
           color: Colors.white,
+          size:32
         ),
           texts: Text("青椒学院",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
@@ -76,7 +77,7 @@ class Time_IconRow extends StatelessWidget {
           ),
           color: Color.fromRGBO(247,125,145,1),
         ),
-        IconIndividuality(icons: Icon(Icons.add_alarm,color: Colors.white),
+        IconIndividuality(icons: Icon(Icons.add_alarm,color: Colors.white, size:32),
           texts: Text("时间发现",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
@@ -84,7 +85,7 @@ class Time_IconRow extends StatelessWidget {
           ),
           color: Colors.blue,
         ),
-        IconIndividuality(icons: Icon(Icons.border_all,color: Colors.white),
+        IconIndividuality(icons: Icon(Icons.border_all,color: Colors.white, size:32),
           texts: Text("全部专栏",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
@@ -92,7 +93,7 @@ class Time_IconRow extends StatelessWidget {
           ),
           color: Color.fromRGBO(252,179,51,20),
         ),
-        IconIndividuality(icons: Icon(Icons.calendar_today,color: Colors.white),
+        IconIndividuality(icons: Icon(Icons.calendar_today,color: Colors.white, size:32),
           texts: Text("签到",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
@@ -100,7 +101,7 @@ class Time_IconRow extends StatelessWidget {
           ),
           color: Color.fromRGBO(183,139,214, 20),
         ),
-        IconIndividuality(icons: Icon(Icons.assignment_ind,color: Colors.white),
+        IconIndividuality(icons: Icon(Icons.assignment_ind,color: Colors.white, size:32),
           texts: Text("我的",style: TextStyle(
             color:Color.fromRGBO(0,0,0,75),
             fontSize: 15,

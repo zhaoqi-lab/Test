@@ -25,7 +25,7 @@ class _IconIndividualityState extends State<IconIndividuality> {
             onPressed: null,
             color:Color.fromRGBO(159,159,159, 1),
             iconSize: widget.size==null? 36:widget.size,
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(8.0),
           ),
           decoration:BoxDecoration(
             borderRadius: BorderRadius.circular(90),
