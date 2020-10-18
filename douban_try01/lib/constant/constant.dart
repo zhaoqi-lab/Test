@@ -17,4 +17,7 @@ class Constant {
   static String douban_time_swiper='assets/Image_src/douban_time_swiper.txt';
   static String douban_time_src_title_one='assets/Image_src/douban_time_src_title_one.txt';
   static String douban_time_src_title_two='assets/Image_src/douban_time_src_title_two.txt';
+  static String douban_doupin_swiper='assets/Image_src/douban_doupin_swipers.txt';
+  static String douban_doupin_src_title_one='assets/Image_src/douban_doupin_src_title_ones.txt';
+  static String douban_doupin_src_title_two='assets/Image_src/douban_doupin_src_title_twos.txt';
 }

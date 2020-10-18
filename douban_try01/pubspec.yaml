@@ -53,11 +53,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-     - assets/images/
-     - mock/
-     - assets/Image_src/douban_time_swiper.txt
-     - assets/Image_src/douban_time_src_title_one.txt
-     - assets/Image_src/douban_time_src_title_two.txt
+    - assets/images/
+    - mock/
+    - assets/Image_src/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -58,6 +58,7 @@ class _SearchBarDemoState extends State<SearchBarDemo> {
             icon: Icon(Icons.search),
             onPressed: (){
               // 调用写好的方法
+              print("d");
               showSearch(context: context,delegate: SearchBar());
             },
           )

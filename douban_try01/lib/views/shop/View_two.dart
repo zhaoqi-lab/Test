@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:douban_try01/widgets/SizeFit_Rpx.dart';
 import 'package:douban_try01/views/shop/Iconindividuality.dart';
+import 'AllColumn.dart';
 class MyHomePage_two extends StatefulWidget {
   @override
   _MyHomePage_twoState createState() => _MyHomePage_twoState();
@@ -38,9 +39,11 @@ class _MyHomePage_twoState extends State<MyHomePage_two> {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-
+          SizedBox(
+            height: SizeFit.setRpx(40),
+          ),
           Container(
-            height: 190,
+            height: SizeFit.setRpx(270),
             child: Swiper(
               itemBuilder: (BuildContext context, int index) {
                 return imgs[index];
@@ -70,30 +73,39 @@ class Time_IconRow extends StatelessWidget {
           color: Colors.white,
           size:32
         ),
-          texts: Text("青椒学院",style: TextStyle(
+          texts: Text("学院",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
           ),
           ),
           color: Color.fromRGBO(247,125,145,1),
         ),
-        IconIndividuality(icons: Icon(Icons.add_alarm,color: Colors.white, size:32),
-          texts: Text("时间发现",style: TextStyle(
+        IconIndividuality(icons: Icon(Icons.add_alarm,color: Colors.white, size:30),
+          texts: Text("发现",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
           ),
           ),
           color: Colors.blue,
         ),
-        IconIndividuality(icons: Icon(Icons.border_all,color: Colors.white, size:32),
-          texts: Text("全部专栏",style: TextStyle(
-            color: Color.fromRGBO(0,0,0,75),
-            fontSize: 15,
+        InkWell(
+          child: IconIndividuality(icons: Icon(Icons.border_all,color: Colors.white, size:30),
+            texts: Text("全部",style: TextStyle(
+              color: Color.fromRGBO(0,0,0,75),
+              fontSize: 15,
+            ),
+            ),
+            color: Color.fromRGBO(252,179,51,20),
           ),
-          ),
-          color: Color.fromRGBO(252,179,51,20),
+          onTap:() {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (ctx) {
+                  return SideListViewMenu();
+                }
+            ));
+          },
         ),
-        IconIndividuality(icons: Icon(Icons.calendar_today,color: Colors.white, size:32),
+        IconIndividuality(icons: Icon(Icons.calendar_today,color: Colors.white, size:30),
           texts: Text("签到",style: TextStyle(
             color: Color.fromRGBO(0,0,0,75),
             fontSize: 15,
@@ -101,7 +113,7 @@ class Time_IconRow extends StatelessWidget {
           ),
           color: Color.fromRGBO(183,139,214, 20),
         ),
-        IconIndividuality(icons: Icon(Icons.assignment_ind,color: Colors.white, size:32),
+        IconIndividuality(icons: Icon(Icons.assignment_ind,color: Colors.white, size:30),
           texts: Text("我的",style: TextStyle(
             color:Color.fromRGBO(0,0,0,75),
             fontSize: 15,
@@ -147,7 +159,7 @@ class _Book_detailState extends State<Book_detail> {
                     borderRadius: BorderRadius.all(
                         Radius.circular(8)),
                     image: DecorationImage(
-                        image: NetworkImage("https://img3.doubanio.com/dae/niffler/niffler/images/b46af582-f7fc-11ea-a7bc-fe19c14d7590.jpg"),
+                        image: NetworkImage("https://qnmob3.doubanio.com/dae/niffler/niffler/images/1f63a874-f7ef-11ea-a542-9adc3f52cc59.jpg"),
                         fit: BoxFit.fill
                     )
                 ),
@@ -219,12 +231,16 @@ class _Book_detailState extends State<Book_detail> {
     );
   }
 
-  Center buildtitle() {
-    return Center(
-      child: Text(widget.title,
-        style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w600
+  Padding buildtitle() {
+    double padding=50;
+    return Padding(
+      padding:  EdgeInsets.fromLTRB(SizeFit.setRpx(padding), 0, SizeFit.setRpx(padding), 0),
+      child: Center(
+        child: Text(widget.title,
+          style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w600
+          ),
         ),
       ),
     );
@@ -396,7 +412,6 @@ class _Image_RecommendState extends State<Image_Recommend> {
             width: SizeFit.setRpx(750),
             child: ListView.builder(
                 shrinkWrap: true, 								//解决无限高度问题
-
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.sign==false?100:widget.images_one.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -413,7 +428,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(8)),
                                   image: DecorationImage(
-                                      image: NetworkImage(widget.sign==false?"assets/images/group_2.jpg":widget.images_one[index]),
+                                      image: NetworkImage(widget.sign==false?"https://img3.doubanio.com/dae/niffler/niffler/images/b46af582-f7fc-11ea-a7bc-fe19c14d7590.jpg":widget.images_one[index]),
                                       fit: BoxFit.fill
                                   )
                               ),
@@ -431,7 +446,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                               ),
                             ),
                             SizedBox(height: 10,width: SizeFit.setRpx(200),),
-                            Text("${widget.sign==false?"99":widget.price_one[index]}元",style: TextStyle(
+                            Text("${widget.sign==false?"99":widget.price_one[index]}",style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromRGBO(241,150,103,20)
@@ -455,7 +470,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                                 image: DecorationImage(
-                                    image: NetworkImage(widget.sign==false?"assets/images/group_2.jpg":widget.images_one[index]),
+                                    image: NetworkImage(widget.sign==false?"https://img3.doubanio.com/dae/niffler/niffler/images/b46af582-f7fc-11ea-a7bc-fe19c14d7590.jpg":widget.images_one[index]),
                                     fit: BoxFit.fill
                                 )
                             ),
@@ -473,7 +488,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                             ),
                           ),
                           SizedBox(height: 10,width: SizeFit.setRpx(200),),
-                          Text("${widget.sign==false?"99":widget.price_one[index]}元",style: TextStyle(
+                          Text("${widget.sign==false?"99":widget.price_one[index]}",style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                               color: Color.fromRGBO(241,150,103,20)
@@ -520,7 +535,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(8)),
                                   image: DecorationImage(
-                                      image: NetworkImage(widget.sign==false?"assets/images/group_2.jpg":widget.images_two[index]),
+                                      image: NetworkImage(widget.sign==false?"https://img3.doubanio.com/dae/niffler/niffler/images/b46af582-f7fc-11ea-a7bc-fe19c14d7590.jpg":widget.images_two[index]),
                                       fit: BoxFit.fill
                                   )
                               ),
@@ -538,7 +553,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                               ),
                             ),
                             SizedBox(height: 10,width: SizeFit.setRpx(200),),
-                            Text("${widget.sign==false?"99":widget.price_two[index]}元",style: TextStyle(
+                            Text("${widget.sign==false?"99":widget.price_two[index]}",style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromRGBO(241,150,103,20)
@@ -562,7 +577,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                                 borderRadius: BorderRadius.all(
                                     Radius.circular(8)),
                                 image: DecorationImage(
-                                    image: NetworkImage(widget.sign==false?"assets/images/group_2.jpg":widget.images_two[index]),
+                                    image: NetworkImage(widget.sign==false?"https://img3.doubanio.com/dae/niffler/niffler/images/b46af582-f7fc-11ea-a7bc-fe19c14d7590.jpg":widget.images_two[index]),
                                     fit: BoxFit.fill
                                 )
                             ),
@@ -580,7 +595,7 @@ class _Image_RecommendState extends State<Image_Recommend> {
                             ),
                           ),
                           SizedBox(height: 10,width: SizeFit.setRpx(200),),
-                          Text("${widget.sign==false?"99":widget.price_two[index]}元",style: TextStyle(
+                          Text("${widget.sign==false?"99":widget.price_two[index]}",style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                               color: Color.fromRGBO(241,150,103,20)

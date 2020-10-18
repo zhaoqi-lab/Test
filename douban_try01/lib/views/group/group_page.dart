@@ -109,6 +109,7 @@ class SearchTextFieldWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(24.0),
       ),
       child: TextField(
+        onTap: onTab,
         cursorColor: Color.fromARGB(255, 0, 189, 96),
         style: TextStyle(fontSize: 18),
         decoration: InputDecoration(
@@ -234,7 +235,7 @@ class Listcontent extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4)),
                      padding: new EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
                       ),
-                      width: SizeFit.setRpx(130),
+                      width: SizeFit.setRpx(140),
                       height: 30,
                     )
                   ),
@@ -262,7 +263,7 @@ class Listcontent extends StatelessWidget {
                         Row(
                           children: [ Icon(Icons.chat_bubble,color: Color.fromRGBO(249,210,135, 1)),
                             SizedBox(width: 5,),
-                            Text("$index",style: TextStyle(color: Color.fromRGBO(166,166,166,1),fontSize: 16,),overflow: TextOverflow.ellipsis),
+                            Text("$index",style: TextStyle(color: Color.fromRGBO(166,166,166,1),fontSize: 16,fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis),
                             SizedBox(width: 24,),
                             Container(
                                 child: Text(discuss_two[index],
